@@ -14,6 +14,8 @@
 		662C32531EB551B2007BD138 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662C32511EB551B2007BD138 /* LaunchScreen.storyboard */; };
 		662C325E1EB551B3007BD138 /* MinesweeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C325D1EB551B3007BD138 /* MinesweeperTests.swift */; };
 		662C32691EB551B3007BD138 /* MinesweeperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662C32681EB551B3007BD138 /* MinesweeperUITests.swift */; };
+		663CCB201EB57EBA00AEC76F /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663CCB1F1EB57EBA00AEC76F /* Tile.swift */; };
+		663CCB221EB57F2800AEC76F /* TilesArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663CCB211EB57F2800AEC76F /* TilesArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		662C32641EB551B3007BD138 /* MinesweeperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinesweeperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		662C32681EB551B3007BD138 /* MinesweeperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperUITests.swift; sourceTree = "<group>"; };
 		662C326A1EB551B3007BD138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		663CCB1F1EB57EBA00AEC76F /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		663CCB211EB57F2800AEC76F /* TilesArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilesArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				662C32481EB551B2007BD138 /* AppDelegate.swift */,
 				662C324A1EB551B2007BD138 /* ViewController.swift */,
 				662C324C1EB551B2007BD138 /* Main.storyboard */,
+				663CCB1F1EB57EBA00AEC76F /* Tile.swift */,
+				663CCB211EB57F2800AEC76F /* TilesArray.swift */,
 				662C324F1EB551B2007BD138 /* Assets.xcassets */,
 				662C32511EB551B2007BD138 /* LaunchScreen.storyboard */,
 				662C32541EB551B2007BD138 /* Info.plist */,
@@ -193,7 +199,6 @@
 				TargetAttributes = {
 					662C32441EB551B2007BD138 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = J3CFNMPAA6;
 						ProvisioningStyle = Automatic;
 					};
 					662C32581EB551B2007BD138 = {
@@ -262,8 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				663CCB201EB57EBA00AEC76F /* Tile.swift in Sources */,
 				662C324B1EB551B2007BD138 /* ViewController.swift in Sources */,
 				662C32491EB551B2007BD138 /* AppDelegate.swift in Sources */,
+				663CCB221EB57F2800AEC76F /* TilesArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J3CFNMPAA6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Minesweeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = arslanwaheed.Minesweeper;
@@ -428,7 +435,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J3CFNMPAA6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Minesweeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = arslanwaheed.Minesweeper;
@@ -514,6 +521,7 @@
 				662C326F1EB551B3007BD138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		662C32701EB551B3007BD138 /* Build configuration list for PBXNativeTarget "MinesweeperTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +530,7 @@
 				662C32721EB551B3007BD138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		662C32731EB551B3007BD138 /* Build configuration list for PBXNativeTarget "MinesweeperUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +539,7 @@
 				662C32751EB551B3007BD138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
