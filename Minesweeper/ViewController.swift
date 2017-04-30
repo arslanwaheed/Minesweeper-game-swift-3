@@ -23,7 +23,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetButtons()
+        for i in 0 ..< buttons.count {
+            buttons[i].backgroundColor = UIColor.cyan
+            buttons[i].setTitle("", for: .normal)
+        }
         
     }
 
@@ -33,22 +36,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonClicked(_ sender: UIButton) {
-        board.buttonClicked(sender)
+        board.buttonClicked(sender,buttons: buttons, isRecursive: false)
         
     }
     
     @IBAction func resetClicked(_ sender: UIButton) {
-        
+        resetButtons()
     }
     
     
     
     func resetButtons(){
+        board = TilesArray()
         for i in 0 ..< buttons.count {
             buttons[i].setTitle("", for: .normal)
-            buttons[i].backgroundColor = UIColor.black
+            buttons[i].isEnabled = true
+            buttons[i].backgroundColor = UIColor.cyan
         }
     }
 
 }
-

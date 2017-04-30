@@ -41,72 +41,65 @@ class TilesArray {
         print(totalBombs)
     }
 
-    func buttonClicked(_ sender : UIButton){
-        
-        sender.backgroundColor = UIColor.brown
-        //sender.isEnabled = false
+    func buttonClicked(_ sender : UIButton, buttons : [UIButton], isRecursive : Bool){
         
         let tag = sender.tag
-        var row : Int
+        let row : Int = tag / 10
         let col = tag % 10
+        var title = ""
         
-        switch tag {
-        case 0...9 :
-            row = 0
-            setTitle(sender, row: row, col: col)
-            
-        case 10...19 :
-            row = 1
-            setTitle(sender, row: row, col: col)
+        print(tag)
 
-        case 20...29 :
-            row = 2
-            setTitle(sender, row: row, col: col)
+        if self.tiles[row][col].isRevealed == false {
 
-        case 30...39 :
-            row = 3
-            setTitle(sender, row: row, col: col)
-
-        case 40...49 :
-            row = 4
-            setTitle(sender, row: row, col: col)
-
-        case 50...59 :
-            row = 5
-            setTitle(sender, row: row, col: col)
-            
-        case 60...69 :
-            row = 6
-            setTitle(sender, row: row, col: col)
-            
-        case 70...79 :
-            row = 7
-            setTitle(sender, row: row, col: col)
-            
-        case 80...89 :
-            row = 8
-            setTitle(sender, row: row, col: col)
-            
-        case 90...99 :
-            row = 9
-            setTitle(sender, row: row, col: col)
-            
-        default : break
-        }
-    }
-    
-    private func setTitle(_ sender:UIButton, row:Int, col:Int){
-        if self.tiles[row][col].isMineLocation {
-            sender.setTitle("💣", for: .normal)
-        }
-        else {
-            if self.tiles[row][col].numNeighboringMines == 0 {
-                sender.setTitle("", for: .normal)
+            if self.tiles[row][col].isMineLocation {
+                title = "💣"
+            }else {
+                title = "\(self.tiles[row][col].numNeighboringMines)"
             }
-            else{
-                sender.setTitle(String(self.tiles[row][col].numNeighboringMines), for: .normal)
+            
+            if !isRecursive {
+                sender.backgroundColor = UIColor.brown
+                sender.isEnabled = false
+                self.tiles[row][col].isRevealed = true
+                sender.setTitle(title, for: .normal)
             }
+            
+            
+            if title == "0" {
+                sender.backgroundColor = UIColor.brown
+                sender.isEnabled = false
+                self.tiles[row][col].isRevealed = true
+                sender.setTitle(title, for: .normal)
+                
+                let index = tag
+                //var neighbors : [UIButton] = []
+                let adjButtons = [-1,-10,1,10]
+                
+                for i in adjButtons {
+                    if col == 0 && i == -1 {
+                        continue
+                    }
+                    if col == 9 && i == 1{
+                        continue
+                    }
+                    
+                    if (index + i) < 100 && (index+i) >= 0 {
+                        print("Tag: \(tag), \(index+i)")
+                        for b in buttons {
+                            if b.tag == (index+i) {
+                                self.buttonClicked(b, buttons: buttons, isRecursive: true)
+                                break
+                            }
+                        }
+                        //self.buttonClicked(buttons[index+i] , buttons: buttons, isRecursive: true)
+                    }
+                }
+                
+            }
+            
         }
+        
     }
 
     func getNeighborTiles(_ tile : Tile) -> [Tile] {
