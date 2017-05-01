@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
+    //😵
     @IBOutlet weak var resetButton: UIButton!       //😃
     @IBOutlet weak var timerLabel: UILabel!         //timer
     @IBOutlet weak var movesLabel: UILabel!         //moves counter
@@ -36,8 +36,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonClicked(_ sender: UIButton) {
-        board.buttonClicked(sender,buttons: buttons)
+        resetButton.setTitle("😮", for: .normal)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+            self.board.buttonClicked(sender,buttons: self.buttons)
+            self.resetButton.setTitle("😃", for: .normal)
+        }
+        
+        //
     }
     
     @IBAction func resetClicked(_ sender: UIButton) {
