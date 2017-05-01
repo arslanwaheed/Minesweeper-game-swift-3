@@ -38,17 +38,14 @@ class TilesArray {
                 }
             }
         }
-        print(totalBombs)
     }
 
-    func buttonClicked(_ sender : UIButton, buttons : [UIButton], isRecursive : Bool){
+    func buttonClicked(_ sender : UIButton, buttons : [UIButton]){
         
         let tag = sender.tag
-        let row : Int = tag / 10
-        let col = tag % 10
+        let row : Int = Int(tag / 10)
+        let col = Int(tag % 10)
         var title = ""
-        
-        print(tag)
 
         if self.tiles[row][col].isRevealed == false {
 
@@ -56,17 +53,16 @@ class TilesArray {
                 title = "💣"
             }else {
                 title = "\(self.tiles[row][col].numNeighboringMines)"
+                if title == "0" {
+                    title = ""
+                }
             }
+            sender.backgroundColor = UIColor.brown
+            sender.isEnabled = false
+            self.tiles[row][col].isRevealed = true
+            sender.setTitle(title, for: .normal)
             
-            if !isRecursive {
-                sender.backgroundColor = UIColor.brown
-                sender.isEnabled = false
-                self.tiles[row][col].isRevealed = true
-                sender.setTitle(title, for: .normal)
-            }
-            
-            
-            if title == "0" {
+            if title == "" {
                 sender.backgroundColor = UIColor.brown
                 sender.isEnabled = false
                 self.tiles[row][col].isRevealed = true
@@ -74,32 +70,27 @@ class TilesArray {
                 
                 let index = tag
                 //var neighbors : [UIButton] = []
-                let adjButtons = [-1,-10,1,10]
+                let adjButtons = [-1,-9,-10,-11,1,9,10,11]
                 
                 for i in adjButtons {
-                    if col == 0 && i == -1 {
+                    if col == 0 && (i == -1 || i == -11 || i == 9) {
                         continue
                     }
-                    if col == 9 && i == 1{
+                    if col == 9 && (i == 1 || i == 11 || i == -9){
                         continue
                     }
                     
                     if (index + i) < 100 && (index+i) >= 0 {
-                        print("Tag: \(tag), \(index+i)")
                         for b in buttons {
                             if b.tag == (index+i) {
-                                self.buttonClicked(b, buttons: buttons, isRecursive: true)
+                                self.buttonClicked(b, buttons: buttons)
                                 break
                             }
                         }
-                        //self.buttonClicked(buttons[index+i] , buttons: buttons, isRecursive: true)
                     }
                 }
-                
             }
-            
         }
-        
     }
 
     func getNeighborTiles(_ tile : Tile) -> [Tile] {

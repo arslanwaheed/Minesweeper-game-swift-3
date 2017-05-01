@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonClicked(_ sender: UIButton) {
-        board.buttonClicked(sender,buttons: buttons, isRecursive: false)
+        board.buttonClicked(sender,buttons: buttons)
         
     }
     

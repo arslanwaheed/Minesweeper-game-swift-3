@@ -420,7 +420,7 @@
                                             <action selector="buttonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MAo-Gw-bN5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HS-cU-7Vg">
+                                    <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HS-cU-7Vg">
                                         <rect key="frame" x="5" y="153" width="32" height="32"/>
                                         <color key="backgroundColor" red="0.38931381858045461" green="0.38392560372491713" blue="0.39360022668393779" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
