@@ -92,6 +92,29 @@ class TilesArray {
             }
         }
     }
+    
+    func isMineClicked(_ sender : UIButton, buttons : [UIButton]){
+        var tag = sender.tag
+        var row : Int = Int(tag / 10)
+        var col = Int(tag % 10)
+        let title = "💣"
+        
+        if self.tiles[row][col].isMineLocation {
+            sender.backgroundColor = UIColor.red
+            sender.setTitle(title, for: .normal)
+            
+            for button in buttons {
+                button.isEnabled = false
+                tag = button.tag
+                row = tag / 10
+                col = tag % 10
+                if self.tiles[row][col].isMineLocation {
+                    button.setTitle(title, for: .normal)
+                }
+            }
+        }
+    }
+    
 
     func getNeighborTiles(_ tile : Tile) -> [Tile] {
         var neighbors : [Tile] = []

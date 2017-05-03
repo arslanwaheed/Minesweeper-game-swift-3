@@ -13,9 +13,10 @@ class ViewController: UIViewController {
     //😵
     @IBOutlet weak var resetButton: UIButton!       //😃
     @IBOutlet weak var timerLabel: UILabel!         //timer
-    @IBOutlet weak var movesLabel: UILabel!         //moves counter
+    @IBOutlet weak var totalBombsLabel: UILabel!
     
-    
+    var gameTimer : Timer!
+    var time = 0
     
     @IBOutlet var buttons: [UIButton]!              //all buttons
     var board : TilesArray = TilesArray()
@@ -23,10 +24,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in 0 ..< buttons.count {
-            buttons[i].backgroundColor = UIColor.cyan
-            buttons[i].setTitle("", for: .normal)
-        }
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        resetButtons()
         
     }
 
@@ -36,14 +35,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonClicked(_ sender: UIButton) {
-        resetButton.setTitle("😮", for: .normal)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-            self.board.buttonClicked(sender,buttons: self.buttons)
-            self.resetButton.setTitle("😃", for: .normal)
-        }
-        
-        //
+        self.board.buttonClicked(sender,buttons: self.buttons)
+        self.board.isMineClicked(sender, buttons: buttons)
+
     }
     
     @IBAction func resetClicked(_ sender: UIButton) {
@@ -54,11 +48,23 @@ class ViewController: UIViewController {
     
     func resetButtons(){
         board = TilesArray()
+        totalBombsLabel.text = "Bombs: \(board.totalBombs)"
         for i in 0 ..< buttons.count {
             buttons[i].setTitle("", for: .normal)
             buttons[i].isEnabled = true
             buttons[i].backgroundColor = UIColor.cyan
         }
+        time = 0
+        timerLabel.text = "Time: \(time)"
+        gameTimer.invalidate()
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+    }
+    
+    //timer controlled function
+    func runTimedCode() {
+        time += 1
+        timerLabel.text = "Time: \(time)"
+        
     }
 
 }

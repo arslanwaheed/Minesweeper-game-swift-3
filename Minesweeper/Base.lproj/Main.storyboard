@@ -1244,8 +1244,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Moves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvX-uI-od9">
-                                <rect key="frame" x="16" y="55" width="141" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Moves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLZ-pr-TbE">
+                                <rect key="frame" x="16" y="53" width="141" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1255,9 +1255,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="movesLabel" destination="IvX-uI-od9" id="nSo-ry-Upa"/>
                         <outlet property="resetButton" destination="rRI-pM-F7L" id="OAp-eq-Z4n"/>
                         <outlet property="timerLabel" destination="1S5-El-9f6" id="CV6-yO-YKi"/>
+                        <outlet property="totalBombsLabel" destination="yLZ-pr-TbE" id="VBc-5V-3zd"/>
                         <outletCollection property="buttons" destination="57p-M6-vRJ" collectionClass="NSMutableArray" id="3ce-uj-Mug"/>
                         <outletCollection property="buttons" destination="Vbs-zb-ec8" collectionClass="NSMutableArray" id="7rc-cc-2dm"/>
                         <outletCollection property="buttons" destination="1Lr-bX-Ulv" collectionClass="NSMutableArray" id="DeG-rF-ZMl"/>
