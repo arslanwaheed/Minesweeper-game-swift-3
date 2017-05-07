@@ -14,6 +14,7 @@ class TilesArray {
     let rows = 10
     let cols = 10
     var totalBombs = 0
+    var isFlagSelected = false
     
     var tiles:[[Tile]] = [] // a 2d array of tiles , indexed by [row][column]
     
@@ -31,8 +32,8 @@ class TilesArray {
         //set mines randomly
         for row in 0 ..< rows {
             for col in 0 ..< cols {
-                //1-in-6 chance of getting a mine
-                if ((arc4random()%6) == 0) {
+                //1-in-5 chance of getting a mine
+                if ((arc4random()%5) == 0 && totalBombs < 20) {
                     setMine(tiles[row][col])
                     totalBombs += 1
                 }
@@ -46,6 +47,21 @@ class TilesArray {
         let row : Int = Int(tag / 10)
         let col = Int(tag % 10)
         var title = ""
+        
+        if !isFlagSelected && sender.currentTitle == "🏳️" {
+            return
+        }
+        
+        if isFlagSelected {
+            if sender.currentTitle == "🏳️" {
+                title = ""
+                sender.setTitle(title, for: .normal)
+                return
+            }
+            title = "🏳️"
+            sender.setTitle(title, for: .normal)
+            return
+        }
 
         if self.tiles[row][col].isRevealed == false {
 
@@ -93,24 +109,40 @@ class TilesArray {
         }
     }
     
-    func isMineClicked(_ sender : UIButton, buttons : [UIButton]){
-        var tag = sender.tag
-        var row : Int = Int(tag / 10)
-        var col = Int(tag % 10)
+    func flagButtonChecked(_ sender : UIButton){
+        if !isFlagSelected {
+            isFlagSelected = true
+            sender.backgroundColor = UIColor.green
+        }else {
+            isFlagSelected = false
+            sender.backgroundColor = UIColor.red
+        }
+    }
+    
+    func isMineClicked(_ sender : UIButton, buttons : [UIButton]) -> Bool{
+        let tag = sender.tag
+        let row : Int = Int(tag / 10)
+        let col = Int(tag % 10)
         let title = "💣"
         
         if self.tiles[row][col].isMineLocation {
             sender.backgroundColor = UIColor.red
             sender.setTitle(title, for: .normal)
-            
-            for button in buttons {
-                button.isEnabled = false
-                tag = button.tag
-                row = tag / 10
-                col = tag % 10
-                if self.tiles[row][col].isMineLocation {
-                    button.setTitle(title, for: .normal)
-                }
+            showAllMines(buttons)
+            return true
+        }
+        return false
+    }
+    
+    func showAllMines(_ buttons : [UIButton]){
+        let title = "💣"
+        for button in buttons {
+            button.isEnabled = false
+            let tag = button.tag
+            let row = tag / 10
+            let col = tag % 10
+            if self.tiles[row][col].isMineLocation {
+                button.setTitle(title, for: .normal)
             }
         }
     }
@@ -148,5 +180,17 @@ class TilesArray {
         for n in neighbors {
             n.numNeighboringMines += 1
         }
+    }
+    
+    func isFinished() -> Bool{
+        var count = 0
+        for row in 0 ..< rows {
+            for col in 0 ..< cols {
+                if self.tiles[row][col].isRevealed {
+                    count += 1
+                }
+            }
+        }
+        return (count == 100-self.totalBombs)
     }
 }
