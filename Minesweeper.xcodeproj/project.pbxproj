@@ -199,6 +199,7 @@
 				TargetAttributes = {
 					662C32441EB551B2007BD138 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = J3CFNMPAA6;
 						ProvisioningStyle = Automatic;
 					};
 					662C32581EB551B2007BD138 = {
@@ -422,7 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J3CFNMPAA6;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = arslanwaheed.Minesweeper;
@@ -435,7 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J3CFNMPAA6;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = arslanwaheed.Minesweeper;

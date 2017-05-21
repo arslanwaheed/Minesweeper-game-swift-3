@@ -44,8 +44,8 @@ class ViewController: UIViewController {
         bestTime = bTime
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
         resetButtons()
-        myAlert = UIAlertController(title: "You Lose!", message: "Press  😵  to play again", preferredStyle: UIAlertControllerStyle.alert)
-        myAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        //myAlert = UIAlertController(title: "You Lose!", message: "Press  😵  to play again", preferredStyle: UIAlertControllerStyle.alert)
+        //myAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
     }
 
     //this method is called if any cell of game is clicked
@@ -57,6 +57,8 @@ class ViewController: UIViewController {
             if isDead {
                 resetButton.setTitle("😵", for: .normal)
                 gameTimer.invalidate()
+                myAlert = UIAlertController(title: "You Lose!", message: "Press  😵  to play again", preferredStyle: UIAlertControllerStyle.alert)
+                myAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(myAlert, animated: true, completion: nil)
             }
         }
